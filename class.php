@@ -89,10 +89,54 @@ class Personnage3
 //EXO 5
 class Personnage4
 {
-
-
+    private $bdd;
+    private $nom;
+    private $id;
+    public function __construct($idPersonnage){
+        try {
+            $bdd=new PDO('mysql:host=192.168.65.194;dbname=Pesant_Objet_Exo5','siteweb','siteweb');
+        
+            $sql = "SELECT * FROM Personnage WHERE idPersonnage = ".$idPersonnage;
+            echo $sql;
+            echo "coucou";
+            if($bdd){
+                echo "ok";
+            }
+            $personnage=$bdd->query($sql);
+           
+            
+            if($personnage){
+                echo "ok";
+                $tab = $personnage->fetch();
+                echo $tab["nom"];
+                $this->nom=$tab["nom"];
+                $this->nom=$tab["idPersonnage"];
+            }else{
+                echo "je suis ko";
+               
+               
+            }
     
+            $this->bdd= $bdd;
+        } catch (\Throwable $th) {
+            echo $th->getMessage();
+        }
+       
+    }
+
+    public function afficher(){
+        echo $this->nom." ".$this->id;
+    }
+
+
 }
+
+//EXO 6
+
+
+
+
+
 
 
 ?>
