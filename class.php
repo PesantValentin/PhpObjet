@@ -87,6 +87,12 @@ class Personnage3
 
 
 //EXO 5
+class Personnage4
+{
+
+
+    
+}
 
 
 ?>
